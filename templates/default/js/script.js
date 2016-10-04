@@ -146,6 +146,38 @@
                             }
                         }
                     },
+                    mes_months: {
+                        validators: {
+                            notEmpty: {
+                                message: "Это поле не может быть пустым"
+                            },
+                            digits: {
+                                message: 'В это поле можно вводить только цифры'
+                            },
+                            regexp: {
+                                regexp: /^[^0]{1}/,
+                                message: 'Кол-во месяцев не должно ровняться нулю или начинаться с нуля'
+                            }
+                        }
+                    },
+                    mes_payment: {
+                        validators: {
+                            notEmpty: {
+                                message: "Это поле не может быть пустым"
+                            },
+                            digits: {
+                                message: 'В это поле можно вводить только цифры'
+                            },
+                            regexp: {
+                                regexp: /^[^0]{1}/,
+                                message: 'Размер первого взноса не должен ровняться нулю или начинаться с нуля'
+                            },
+                            stringLength: {
+                                message: 'Размер первого взноса не может быть меньше 1 000 руб.',
+                                min: 4
+                            }
+                        }
+                    },
                     mes_body: {
                         validators: {
                             notEmpty: {

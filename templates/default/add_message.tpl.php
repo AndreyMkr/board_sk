@@ -81,6 +81,18 @@
 	</div>
 
 	<div class="form-group">
+		<label for="mes_months" class="control-label">Кол-во месяцев рассрочки</label>
+		<input id="mes_months" class="form-control" type='text' name='mes_months'
+			   value="<?= $_SESSION['msg']['mess']['months'] ?>" placeholder="Кол-во месяцев рассрочки">
+	</div>
+
+	<div class="form-group">
+		<label for="mes_payment" class="control-label">Размер первого взноса</label>
+		<input id="mes_payment" class="form-control" type='text' name='mes_payment'
+			   value="<?= $_SESSION['msg']['mess']['payment'] ?>" placeholder="Размер первого взноса">
+	</div>
+
+	<div class="form-group">
 		<label for="mes_price" class="control-label">Цена</label>
 		<input id="mes_price" class="form-control" type='text' name='mes_price'
 			value="<?= $_SESSION['msg']['mess']['price'] ?>" placeholder="Цена">

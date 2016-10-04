@@ -760,6 +760,8 @@ function addMessage($mysql_link, $data, $user) {
 	$category = clearData($mysql_link, $data['mes_categories'], 'i');
 	$town = clearData($mysql_link, $data['mes_town']);
 	$price = clearData($mysql_link, $data['mes_price']);
+	$months = clearData($mysql_link, $data['mes_months']);
+	$first_payment = clearData($mysql_link, $data['mes_payment']);
 	$body = clearData($mysql_link, $data['mes_body'], 'l');
 
 	$msg = '';
@@ -788,6 +790,14 @@ function addMessage($mysql_link, $data, $user) {
 
 	if(empty($price)) {
 		$msg .= 'Введите цену<br>';
+	}
+
+	if(empty($months)) {
+		$msg .= 'Введите кол-во месяцев рассрочки<br>';
+	}
+
+	if(empty($first_payment)) {
+		$msg .= 'Введите размер первого взноса<br>';
 	}
 
 	if(empty($body)) {
@@ -819,6 +829,8 @@ function addMessage($mysql_link, $data, $user) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
 		$_SESSION['msg']['mess']['price'] = $price;
+		$_SESSION['msg']['mess']['months'] = $months;
+		$_SESSION['msg']['mess']['payment'] = $first_payment;
 		$_SESSION['msg']['mess']['body'] = $body;
 		$_SESSION['msg']['mess']['type'] = $type;
 		$_SESSION['msg']['mess']['mes_category'] = $category;
@@ -829,6 +841,8 @@ function addMessage($mysql_link, $data, $user) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
 		$_SESSION['msg']['mess']['price'] = $price;
+		$_SESSION['msg']['mess']['months'] = $months;
+		$_SESSION['msg']['mess']['payment'] = $first_payment;
 		$_SESSION['msg']['mess']['body'] = $body;
 		$_SESSION['msg']['mess']['type'] = $type;
 		$_SESSION['msg']['mess']['mes_category'] = $category;
@@ -849,6 +863,8 @@ function addMessage($mysql_link, $data, $user) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
 		$_SESSION['msg']['mess']['price'] = $price;
+		$_SESSION['msg']['mess']['months'] = $months;
+		$_SESSION['msg']['mess']['payment'] = $first_payment;
 		$_SESSION['msg']['mess']['body'] = $body;
 		$_SESSION['msg']['mess']['type'] = $type;
 		$_SESSION['msg']['mess']['mes_category'] = $category;
@@ -859,6 +875,8 @@ function addMessage($mysql_link, $data, $user) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
 		$_SESSION['msg']['mess']['price'] = $price;
+		$_SESSION['msg']['mess']['months'] = $months;
+		$_SESSION['msg']['mess']['payment'] = $first_payment;
 		$_SESSION['msg']['mess']['body'] = $body;
 		$_SESSION['msg']['mess']['type'] = $type;
 		$_SESSION['msg']['mess']['mes_category'] = $category;
@@ -884,6 +902,8 @@ function addMessage($mysql_link, $data, $user) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
 		$_SESSION['msg']['mess']['price'] = $price;
+		$_SESSION['msg']['mess']['months'] = $months;
+		$_SESSION['msg']['mess']['payment'] = $first_payment;
 		$_SESSION['msg']['mess']['body'] = $body;
 		$_SESSION['msg']['mess']['type'] = $type;
 		$_SESSION['msg']['mess']['mes_category'] = $category;
@@ -894,6 +914,8 @@ function addMessage($mysql_link, $data, $user) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
 		$_SESSION['msg']['mess']['price'] = $price;
+		$_SESSION['msg']['mess']['months'] = $months;
+		$_SESSION['msg']['mess']['payment'] = $first_payment;
 		$_SESSION['msg']['mess']['body'] = $body;
 		$_SESSION['msg']['mess']['type'] = $type;
 		$_SESSION['msg']['mess']['mes_category'] = $category;
@@ -961,8 +983,8 @@ function addMessage($mysql_link, $data, $user) {
 		$additional_images = rtrim($additional_images, '|');
 	}
 
-	$sql = "INSERT INTO mes_posts (title, body, date, user_id, category_id, type_id, town, img, additional_images, price) VALUES ('%s', '%s', UNIX_TIMESTAMP(), '%d', '%d', '%d', '%s', '%s', '%s', '%d')";
-	$sql = sprintf($sql, $title, $body, $user['user_id'], $category, $type, $town, $filename, $additional_images, $price);
+	$sql = "INSERT INTO mes_posts (title, body, date, user_id, category_id, type_id, town, img, additional_images, price, months_rassr, first_payment) VALUES ('%s', '%s', UNIX_TIMESTAMP(), '%d', '%d', '%d', '%s', '%s', '%s', '%d', '%d', '%d')";
+	$sql = sprintf($sql, $title, $body, $user['user_id'], $category, $type, $town, $filename, $additional_images, $price, $months, $first_payment);
 
 	$result = mysqli_query($mysql_link, $sql);
 
@@ -970,6 +992,8 @@ function addMessage($mysql_link, $data, $user) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
 		$_SESSION['msg']['mess']['price'] = $price;
+		$_SESSION['msg']['mess']['months'] = $months;
+		$_SESSION['msg']['mess']['payment'] = $first_payment;
 		$_SESSION['msg']['mess']['body'] = $body;
 		$_SESSION['msg']['mess']['type'] = $type;
 		$_SESSION['msg']['mess']['mes_category'] = $category;
