@@ -8,7 +8,7 @@ define('DB_HOST', 'localhost');
 /**
  * Имя базы данных
  */
-define('DB_NAME', 'board');
+define('DB_NAME', 'delete3');
 
 /**
  * Юзер базы данных

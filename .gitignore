@@ -1,5 +1,6 @@
 .gitignore
 .idea/
+config.php
 # Created by https://www.gitignore.io/api/phpstorm
 
 ### PhpStorm ###
