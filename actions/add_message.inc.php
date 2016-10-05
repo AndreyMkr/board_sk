@@ -15,5 +15,5 @@ if(!$user or privileges($mysql_link, !$user['role_id'], array('ADD_MESS'))) {
 			exit;
 		}
 	}
-	$content = template('add_message.tpl.php', array('categories' => $categories, 'types' => $types));
+	$content = template('add_message.tpl.php', array('categories' => $categories, 'types' => $types, 'countries' => $countries));
 }
