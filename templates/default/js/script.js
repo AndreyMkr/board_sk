@@ -298,13 +298,17 @@
 
         function jsonToSelectlist(data, type) {
             var type_ru = '';
+            var type_ru_caps = '';
             if (type == 'region') {
                 type_ru = 'регион';
+                type_ru_caps = 'Регион';
             } else if (type == 'city') {
                 type_ru = 'город';
+                type_ru_caps = 'Город';
             }
 
             var output = '';
+            output += '<label for="'+ type_ru +'" class="control-label">'+ type_ru_caps +'</label>';
             output += '<select>';
             output += '<option value="" selected disabled>Выберите ' + type_ru + '</option>';
             $.each(data, function (key, value) {
@@ -326,12 +330,12 @@
                     type: "POST",
                     ajaxLoad: true,
                     data: query,
-                    beforeSend: function(){
-                        $('#places').find('h3').html('.......');
-                    },
-                    complete: function() {
-                        $('#places').find('h3').html('Страны');
-                    },
+                    // beforeSend: function(){
+                    //     $('#places').find('h3').html('.......');
+                    // },
+                    // complete: function() {
+                    //     $('#places').find('h3').html('Страны');
+                    // },
                     success: function (data) {
 
                         var regions = $('#regions');
@@ -365,14 +369,14 @@
                     type: "POST",
                     ajaxLoad: true,
                     data: query,
-                    beforeSend: function(){
-
-                        $('#places').find('h3').html('.......');
-                    },
-                    complete: function() {
-                        $('#places').find('h3').html('Страны');
-
-                    },
+                    // beforeSend: function(){
+                    //
+                    //     $('#places').find('h3').html('.......');
+                    // },
+                    // complete: function() {
+                    //     $('#places').find('h3').html('Страны');
+                    //
+                    // },
                     success: function (data) {
                         console.time('start');
 
