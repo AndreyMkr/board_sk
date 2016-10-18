@@ -7,7 +7,9 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="<?= THEME ?>css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" media="screen" href="<?= THEME ?>css/bootstrap-theme.min.css"/>
 	<link rel="stylesheet" type="text/css" media="screen" href="<?= THEME ?>css/style.css"/>
-	<link rel="stylesheet" type="text/css" media="screen" href="<?= THEME ?>css/jquery.formstyler.css"/>
+	<? if($_GET['action'] !== 'registration'){ echo "
+	<link rel='stylesheet' type='text/css' media='screen' href='". THEME ."css/jquery.formstyler.css'/>
+	";	}?>
 	<link rel="stylesheet" type="text/css" media="screen" href="<?= THEME ?>css/colorbox/example1/colorbox.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="<?= THEME ?>css/colorbox/example1/colorbox.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="<?= THEME ?>css/jcarousel.connected-carousels.css">
