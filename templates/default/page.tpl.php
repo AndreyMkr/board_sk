@@ -23,7 +23,7 @@
 	</div>
 
 	<div class="row">
-		<? if($_GET['action'] !== 'add_message'){ include THEME . 'sidebar.tpl.php';}?>
+		<? if($_GET['action'] !== 'add_message' && $_GET['action'] !== 'registration'){ include THEME . 'sidebar.tpl.php';}?>
 		<div id="content" class="col-md-9 <?= $action ?>">
 			<div class="page-header">
 				<h2 class="title_page"><?= $title ?></h2>
