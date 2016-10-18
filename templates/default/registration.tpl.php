@@ -26,7 +26,36 @@
 		</div>
 
 		<div class="form-group">
+			<label for="phone">Телефон</label>
+			<input id="phone" class="form-control" type="text" name="phone" value="" size="">
+		</div>
+
+		<div class="form-group">
 			<input id="reg_button" type="submit" class="btn btn-primary" value="Зарегистрироваться" name="reg"/>
 		</div>
 	</form>
+
+	<script>
+		var listCountries = $.masksSort($.masksLoad("/templates/default/js/inputmask/data/phone-codes.json"), ['#'], /[0-9]|#/, "mask");
+		var maskOpts = {
+			inputmask: {
+				definitions: {
+					'#': {
+						validator: "[0-9]",
+						cardinality: 1
+					}
+				},
+				showMaskOnHover: false,
+				autoUnmask: true,
+				clearMaskOnLostFocus: false
+			},
+			match: /[0-9]/,
+			replace: '#',
+			listKey: "mask"
+		};
+
+		$('#phone').inputmasks($.extend(true, {}, maskOpts, {
+			list: listCountries
+		}));
+	</script>
 <? endif; ?>
