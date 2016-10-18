@@ -86,7 +86,7 @@
             <div id="countries">
                 <label for="country" class="control-label">Страна</label>
                 <select name="country" id="country">
-                    <option value="" selected disabled>Выберите страну</option>
+                    <option value="<?= $_SESSION['msg']['mess']['country']; ?>" selected disabled>Выберите страну</option>
                     <? foreach ($countries as $country): ?>
                         <option value="<?= $country['country_id'] ?>"><?= $country['name_country'] ?></option>
                     <? endforeach; ?>
@@ -96,9 +96,9 @@
 
         <div class="form-group">
             <div id="regions">
-                <label for="regions" class="control-label">Регион</label>
-                <select name="regions" id="regions" disabled>
-                    <option value="" selected disabled>Выберите регион</option>
+                <label for="region" class="control-label">Регион</label>
+                <select name="region" id="region" disabled>
+                    <option value="<?= $_SESSION['msg']['mess']['region']; ?>" selected disabled>Выберите регион</option>
                 </select>
             </div>
         </div>
@@ -107,7 +107,7 @@
             <div id="cities">
                 <label for="cities" class="control-label">Город</label>
                 <select name="cities" id="cities" disabled>
-                    <option value="" selected disabled>Выберите город</option>
+                    <option value="<?= $_SESSION['msg']['mess']['cities']; ?>" selected disabled>Выберите город</option>
                 </select>
             </div>
         </div>

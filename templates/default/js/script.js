@@ -1,6 +1,3 @@
-/**
- * Created by Fly on 08.08.2015.
- */
 
 !function () {
     'use strict';
@@ -122,6 +119,27 @@
                         }
                     },
                     mes_town: {
+                        validators: {
+                            notEmpty: {
+                                message: "Это поле не может быть пустым"
+                            }
+                        }
+                    },
+                    country: {
+                        validators: {
+                            notEmpty: {
+                                message: "Это поле не может быть пустым"
+                            }
+                        }
+                    },
+                    region: {
+                        validators: {
+                            notEmpty: {
+                                message: "Это поле не может быть пустым"
+                            }
+                        }
+                    },
+                    cities: {
                         validators: {
                             notEmpty: {
                                 message: "Это поле не может быть пустым"

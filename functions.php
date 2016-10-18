@@ -764,6 +764,10 @@ function addMessage($mysql_link, $data, $user) {
 	$first_payment = clearData($mysql_link, $data['mes_payment']);
 	$body = clearData($mysql_link, $data['mes_body'], 'l');
 
+	$country = clearData($mysql_link, $data['country']);;
+	$region = clearData($mysql_link, $data['region']);;
+	$cities = clearData($mysql_link, $data['cities']);;
+
 	$msg = '';
 
 	if(empty($_SESSION['capcha']) or $_SESSION['capcha'] !== $data['capcha']) {
@@ -786,6 +790,18 @@ function addMessage($mysql_link, $data, $user) {
 
 	if(empty($town)) {
 		$msg .= 'Введите город<br>';
+	}
+
+	if (empty($country)) {
+		$msg .= 'Выберите страну<br>';
+	}
+
+	if (empty($region)) {
+		$msg .= 'Выберите регион<br>';
+	}
+
+	if (empty($cities)) {
+		$msg .= 'Выберите город<br>';
 	}
 
 	if(empty($price)) {
@@ -828,6 +844,9 @@ function addMessage($mysql_link, $data, $user) {
 	if(!empty($msg)) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
+		$_SESSION['msg']['mess']['country'] = $country;
+		$_SESSION['msg']['mess']['region'] = $region;
+		$_SESSION['msg']['mess']['cities'] = $cities;
 		$_SESSION['msg']['mess']['price'] = $price;
 		$_SESSION['msg']['mess']['months'] = $months;
 		$_SESSION['msg']['mess']['payment'] = $first_payment;
@@ -840,6 +859,9 @@ function addMessage($mysql_link, $data, $user) {
 	if(!empty($_FILES['mes_image']['erroe'])) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
+		$_SESSION['msg']['mess']['country'] = $country;
+		$_SESSION['msg']['mess']['region'] = $region;
+		$_SESSION['msg']['mess']['cities'] = $cities;
 		$_SESSION['msg']['mess']['price'] = $price;
 		$_SESSION['msg']['mess']['months'] = $months;
 		$_SESSION['msg']['mess']['payment'] = $first_payment;
@@ -862,6 +884,9 @@ function addMessage($mysql_link, $data, $user) {
 	if(!$mime_img) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
+		$_SESSION['msg']['mess']['country'] = $country;
+		$_SESSION['msg']['mess']['region'] = $region;
+		$_SESSION['msg']['mess']['cities'] = $cities;
 		$_SESSION['msg']['mess']['price'] = $price;
 		$_SESSION['msg']['mess']['months'] = $months;
 		$_SESSION['msg']['mess']['payment'] = $first_payment;
@@ -874,6 +899,9 @@ function addMessage($mysql_link, $data, $user) {
 	if($_FILES['mes_image']['size'] > (2 * 1024 * 1024)) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
+		$_SESSION['msg']['mess']['country'] = $country;
+		$_SESSION['msg']['mess']['region'] = $region;
+		$_SESSION['msg']['mess']['cities'] = $cities;
 		$_SESSION['msg']['mess']['price'] = $price;
 		$_SESSION['msg']['mess']['months'] = $months;
 		$_SESSION['msg']['mess']['payment'] = $first_payment;
@@ -901,6 +929,9 @@ function addMessage($mysql_link, $data, $user) {
 	if(!move_uploaded_file($_FILES['mes_image']['tmp_name'], IMAGES . $filename)) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
+		$_SESSION['msg']['mess']['country'] = $country;
+		$_SESSION['msg']['mess']['region'] = $region;
+		$_SESSION['msg']['mess']['cities'] = $cities;
 		$_SESSION['msg']['mess']['price'] = $price;
 		$_SESSION['msg']['mess']['months'] = $months;
 		$_SESSION['msg']['mess']['payment'] = $first_payment;
@@ -913,6 +944,9 @@ function addMessage($mysql_link, $data, $user) {
 	if(!img_resize($filename, $mime_img)) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
+		$_SESSION['msg']['mess']['country'] = $country;
+		$_SESSION['msg']['mess']['region'] = $region;
+		$_SESSION['msg']['mess']['cities'] = $cities;
 		$_SESSION['msg']['mess']['price'] = $price;
 		$_SESSION['msg']['mess']['months'] = $months;
 		$_SESSION['msg']['mess']['payment'] = $first_payment;
@@ -960,6 +994,9 @@ function addMessage($mysql_link, $data, $user) {
 			if(!img_resize($additional_filename, $mime_img)) {
 				$_SESSION['msg']['mess']['title'] = $title;
 				$_SESSION['msg']['mess']['town'] = $town;
+				$_SESSION['msg']['mess']['country'] = $country;
+				$_SESSION['msg']['mess']['region'] = $region;
+				$_SESSION['msg']['mess']['cities'] = $cities;
 				$_SESSION['msg']['mess']['price'] = $price;
 				$_SESSION['msg']['mess']['body'] = $body;
 				$_SESSION['msg']['mess']['type'] = $type;
@@ -973,6 +1010,9 @@ function addMessage($mysql_link, $data, $user) {
 		if(!empty($msg)) {
 			$_SESSION['msg']['mess']['title'] = $title;
 			$_SESSION['msg']['mess']['town'] = $town;
+			$_SESSION['msg']['mess']['country'] = $country;
+			$_SESSION['msg']['mess']['region'] = $region;
+			$_SESSION['msg']['mess']['cities'] = $cities;
 			$_SESSION['msg']['mess']['price'] = $price;
 			$_SESSION['msg']['mess']['body'] = $body;
 			$_SESSION['msg']['mess']['type'] = $type;
@@ -991,6 +1031,9 @@ function addMessage($mysql_link, $data, $user) {
 	if(!$result) {
 		$_SESSION['msg']['mess']['title'] = $title;
 		$_SESSION['msg']['mess']['town'] = $town;
+		$_SESSION['msg']['mess']['country'] = $country;
+		$_SESSION['msg']['mess']['region'] = $region;
+		$_SESSION['msg']['mess']['cities'] = $cities;
 		$_SESSION['msg']['mess']['price'] = $price;
 		$_SESSION['msg']['mess']['months'] = $months;
 		$_SESSION['msg']['mess']['payment'] = $first_payment;
