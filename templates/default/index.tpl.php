@@ -17,6 +17,8 @@
 
 
 	<script type="text/javascript" src="<?= THEME ?>js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="<?= THEME ?>js/inputmask/js/jquery.inputmask.bundle.min.js"></script>
+	<script type="text/javascript" src="<?= THEME ?>js/inputmask/js/jquery.inputmask-multi.min.js"></script>
 	<script type="text/javascript" src="<?= THEME ?>js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?= THEME ?>js/jquery.formstyler.min.js"></script>
 	<script type="text/javascript" src="<?= THEME ?>js/script.js"></script>
