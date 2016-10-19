@@ -182,6 +182,7 @@ function registration($mysql_link, $data){
 	$reg_name = clearData($mysql_link, $data['reg_name']);
 	$reg_pass = trim($data['reg_password']);
 	$reg_pass_confirm = trim($data['reg_password_confirm']);
+	$reg_phone = $data['reg_phone'];
 
 	$msg = '';
 
@@ -205,6 +206,10 @@ function registration($mysql_link, $data){
 
 	if(!empty($reg_pass) and $reg_pass !== $reg_pass_confirm){
 		$msg .= 'Пароли не совпадают<br>';
+	}
+
+	if(empty($reg_phone)){
+		$msg .= 'Введите телефон<br>';
 	}
 
 	//Смотрим есть ли пользователь с таким же логином
@@ -235,11 +240,16 @@ function registration($mysql_link, $data){
 		$msg .= 'Логин должен быть не меньше 6х символов<br>';
 	}
 
+	if(strlen($reg_phone) < 11){
+		$msg .= 'Телефон должен быть не меньше 11х символов<br>';
+	}
+
 	if(!empty($msg)){
 		$_SESSION['msg']['reg'] = array(
 			'login' => $reg_login,
 			'name' => $reg_name,
 			'email' => $reg_email,
+			'phone' => $reg_phone,
 		);
 		return setMessage($msg, 'error');
 	}
@@ -247,8 +257,8 @@ function registration($mysql_link, $data){
 	$reg_pass = md5($reg_pass);
 	$hash = md5(microtime());
 
-	$sql = "INSERT INTO mes_users (login, password, name, hash, email, created, last_login) VALUES ('%s', '%s', '%s', '%s', '%s', UNIX_TIMESTAMP(), UNIX_TIMESTAMP())";
-	$sql = sprintf($sql, $reg_login, $reg_pass, $reg_name, $hash, $reg_email);
+	$sql = "INSERT INTO mes_users (login, password, name, hash, email, phone, created, last_login) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', UNIX_TIMESTAMP(), UNIX_TIMESTAMP())";
+	$sql = sprintf($sql, $reg_login, $reg_pass, $reg_name, $hash, $reg_email, $reg_phone);
 
 	$result = mysqli_query($mysql_link, $sql);
 
@@ -257,6 +267,7 @@ function registration($mysql_link, $data){
 			'login' => $reg_login,
 			'name' => $reg_name,
 			'email' => $reg_email,
+			'phone' => $reg_phone,
 		);
 		return setMessage('Ошибка при регистрации, обратитесь к администратору или попробуйте зарегистрироваться позже', 'error');
 	}

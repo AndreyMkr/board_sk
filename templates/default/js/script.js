@@ -270,6 +270,17 @@
                             }
                         }
                     },
+                    reg_phone: {
+                        validators: {
+                            notEmpty: {
+                                message: "Это поле не может быть пустым"
+                            },
+                            stringLength: {
+                                message: 'Телефон должен быть не меньше 11х символов',
+                                min: 11
+                            }
+                        }
+                    },
                     reg_name: {
                         validators: {
                             notEmpty: {

@@ -26,8 +26,8 @@
 		</div>
 
 		<div class="form-group">
-			<label for="phone">Телефон</label>
-			<input id="phone" class="form-control" type="text" name="phone" value="" size="">
+			<label for="reg_phone">Телефон</label>
+			<input id="reg_phone" class="form-control" type="text" name="reg_phone" value="" size="">
 		</div>
 
 		<div class="form-group">
@@ -54,7 +54,7 @@
 			listKey: "mask"
 		};
 
-		$('#phone').inputmasks($.extend(true, {}, maskOpts, {
+		$('#reg_phone').inputmasks($.extend(true, {}, maskOpts, {
 			list: listCountries
 		}));
 	</script>
